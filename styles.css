@@ -1,0 +1,778 @@
+/* ==========================================================================
+   TOKO BUKU JINGGA — DESIGN SYSTEM & STYLESHEET
+   Patokan Utama Color Palette: Gramedia.id
+   - Primary: Gramedia Biscay Navy (#1D3A6C)
+   - Accent: Gramedia Flamingo Orange / Jingga (#EE6039)
+   - Highlight: Gramedia Goldenrod (#FED66F)
+   - Background: Warm Jingga-Krem (#FFF9F5, #FDF3EB)
+   ========================================================================== */
+
+:root {
+  /* Gramedia.id Color Palette Tokens */
+  --color-primary: #1D3A6C;        /* Biscay Navy */
+  --color-primary-dark: #122547;   /* Deep Navy */
+  --color-primary-light: #2A4F8A;  /* Soft Navy */
+  --color-accent: #EE6039;         /* Flamingo Orange / Jingga Utama */
+  --color-accent-hover: #D74A23;   /* Deep Orange Hover */
+  --color-accent-soft: #FFF0EB;    /* Pale Orange Tint */
+  --color-gold: #FED66F;           /* Goldenrod */
+  --color-gold-soft: #FFF9E6;      /* Pale Gold */
+
+  /* Warm Jingga-Krem Palette */
+  --color-cream-100: #FFFDFB;
+  --color-cream-200: #FFF9F5;      /* Main Warm Cream Background */
+  --color-cream-300: #FDF3EB;      /* Subtle Warm Shade */
+  --color-cream-400: #F7E7D9;      /* Border / Accent Warm */
+  --color-cream-sand: #EFE4D6;     /* Book spine tone */
+
+  /* Neutral & Surface Tokens */
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #FAFBFC;
+  --color-border: #E8ECEF;
+  --color-border-warm: #F2E4D8;
+  --color-text-main: #1D2939;      /* Deep Slate Charcoal */
+  --color-text-body: #475467;      /* Neutral Slate Body */
+  --color-text-muted: #667085;     /* Soft Muted */
+  --color-text-light: #98A2B3;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Elevation & Shadows */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 2px 6px rgba(29, 58, 108, 0.06);
+  --shadow-md: 0 8px 20px rgba(29, 58, 108, 0.08), 0 2px 6px rgba(238, 96, 57, 0.04);
+  --shadow-lg: 0 16px 36px rgba(29, 58, 108, 0.12), 0 4px 12px rgba(238, 96, 57, 0.08);
+  --shadow-orange-glow: 0 10px 24px -4px rgba(238, 96, 57, 0.35);
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-200);
+  color: var(--color-text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ==========================================================================
+   TOP BAR (Gramedia Style)
+   ========================================================================== */
+.top-bar {
+  background-color: var(--color-primary-dark);
+  color: #E2E8F0;
+  font-size: 0.8125rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.top-bar-badge {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.top-bar-text {
+  font-weight: 500;
+  color: #CBD5E1;
+}
+
+/* ==========================================================================
+   HEADER / NAVIGATION
+   ========================================================================== */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-smooth);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #D74A23 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 10px rgba(238, 96, 57, 0.25);
+}
+
+.brand-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.brand-accent {
+  color: var(--color-accent);
+}
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: var(--color-cream-300);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-warm);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* ==========================================================================
+   SECTION 1: HERO SECTION
+   Visual Hangat, Warna Jingga-Krem, Patokan Warna Gramedia.id
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  background: linear-gradient(145deg, #FFFDFB 0%, #FFF5ED 45%, #FBF0E4 100%);
+  padding: 5rem 0 5.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border-warm);
+}
+
+/* Ornamen Latar & Cahaya Hangat */
+.hero-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(238, 96, 57, 0.18) 0%, rgba(254, 214, 111, 0.12) 60%, transparent 100%);
+  top: -100px;
+  right: -80px;
+}
+
+.glow-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(29, 58, 108, 0.08) 0%, rgba(238, 96, 57, 0.06) 70%, transparent 100%);
+  bottom: -80px;
+  left: -50px;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(29, 58, 108, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* Kolom Teks / Konten Kiri */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-cream-400);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.pill-sparkle {
+  font-size: 0.95rem;
+}
+
+.pill-text {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-sans);
+  font-size: 3.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+}
+
+.text-highlight {
+  color: var(--color-accent);
+  position: relative;
+  display: inline-block;
+}
+
+.text-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: rgba(254, 214, 111, 0.45);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* Kalimat Penjelas Wajib PRD */
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-accent);
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+
+.hero-description {
+  font-size: 1.075rem;
+  color: var(--color-text-body);
+  max-width: 520px;
+  margin-bottom: 2.25rem;
+  line-height: 1.7;
+}
+
+/* CTA Group */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.75rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-orange-glow);
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -4px rgba(238, 96, 57, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+.hero-meta-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.meta-separator {
+  color: var(--color-cream-400);
+}
+
+/* Baris Fitur Kecil di Bawah CTA */
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-cream-400);
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.feature-icon {
+  font-size: 1.35rem;
+  background-color: #FFFFFF;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-cream-400);
+  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
+}
+
+.feature-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-info strong {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+.feature-info span {
+  font-size: 0.775rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   KOLOM VISUAL HANGAT (JINGGA-KREM AESTHETIC)
+   ========================================================================== */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.visual-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+}
+
+.visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-cream-400);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 2rem 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 3;
+}
+
+.card-top-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--color-cream-400);
+}
+
+.badge-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-stars {
+  color: #F59E0B;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* Komposisi Buku Bertumpuk (3D Layers) */
+.books-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  perspective: 1000px;
+  margin-bottom: 1.5rem;
+}
+
+.book-layer {
+  display: flex;
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 16px rgba(29, 58, 108, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-layer:hover {
+  transform: translateX(6px) scale(1.01);
+  box-shadow: 0 10px 22px rgba(29, 58, 108, 0.14);
+}
+
+/* Buku 1: Jingga Terracotta Hangat */
+.book-layer-1 {
+  background: linear-gradient(135deg, #EE6039 0%, #D44E28 100%);
+}
+
+.book-spine {
+  width: 22px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.book-cover {
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.book-accent-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: var(--color-gold);
+}
+
+.book-text-group {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.book-genre-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFF2EB;
+  margin-bottom: 0.2rem;
+}
+
+.book-mock-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.book-mock-author {
+  font-size: 0.8rem;
+  color: #FED7AA;
+  margin-top: 0.15rem;
+}
+
+.book-emboss-icon {
+  font-size: 1.5rem;
+  opacity: 0.85;
+}
+
+/* Buku 2: Biscay Navy Gramedia */
+.book-layer-2 {
+  background: linear-gradient(135deg, #1D3A6C 0%, #14294D 100%);
+}
+
+.spine-navy {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.strip-gold {
+  background-color: var(--color-accent);
+}
+
+.tag-navy {
+  color: var(--color-gold);
+}
+
+.text-light {
+  color: #FFFFFF;
+}
+
+.text-muted-light {
+  color: #94A3B8;
+}
+
+/* Buku 3: Sand Krem Hangat */
+.book-layer-3 {
+  background: linear-gradient(135deg, #FBF4EA 0%, #F5E8D6 100%);
+  border: 1px solid var(--color-cream-400);
+}
+
+.spine-cream {
+  background-color: #E6D5C1;
+}
+
+.strip-orange {
+  background-color: var(--color-accent);
+}
+
+.tag-cream {
+  color: var(--color-accent);
+}
+
+.text-dark {
+  color: var(--color-primary);
+}
+
+.text-muted-dark {
+  color: var(--color-text-body);
+}
+
+/* Floating Badges */
+.floating-badge {
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.95rem;
+  box-shadow: 0 10px 25px rgba(29, 58, 108, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 5;
+  border: 1px solid var(--color-cream-400);
+  animation: floatAnimation 4s ease-in-out infinite alternate;
+}
+
+.badge-trust {
+  top: -18px;
+  right: -15px;
+}
+
+.badge-readers {
+  bottom: -18px;
+  left: -15px;
+  animation-delay: -2s;
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.badge-icon-box {
+  width: 28px;
+  height: 28px;
+  background-color: #10B981;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.badge-emoji-box {
+  font-size: 1.15rem;
+}
+
+.badge-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-headline {
+  font-size: 0.775rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.badge-subline {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.card-backdrop-ornament {
+  position: absolute;
+  inset: -12px -12px -12px -12px;
+  background: linear-gradient(135deg, rgba(238, 96, 57, 0.12) 0%, rgba(254, 214, 111, 0.15) 100%);
+  border-radius: 32px;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Mobile Friendly - PRD Kriteria 8 & 11)
+   ========================================================================== */
+@media (max-width: 991px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-features {
+    text-align: left;
+  }
+
+  .hero-visual {
+    width: 100%;
+  }
+
+  .visual-card-wrapper {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .top-bar-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.35rem;
+  }
+
+  .header-status {
+    display: none; /* Sembunyikan jam di mobile agar header tetap lega */
+  }
+
+  .hero-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.45rem;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .floating-badge {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+    animation: none;
+  }
+
+  .card-top-tag {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
